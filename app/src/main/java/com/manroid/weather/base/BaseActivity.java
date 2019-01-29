@@ -1,4 +1,4 @@
-package com.manroid.weather;
+package com.manroid.weather.base;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -20,6 +20,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.manroid.weather.network.ConnectionDetector;
+import com.manroid.weather.service.CurrentWeatherService;
+import com.manroid.weather.activity.GraphsActivity;
+import com.manroid.weather.activity.MainActivity;
+import com.manroid.weather.R;
+import com.manroid.weather.activity.SettingsActivity;
+import com.manroid.weather.utils.Utils;
+import com.manroid.weather.activity.WeatherForecastActivity;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -90,7 +99,7 @@ public class BaseActivity extends AppCompatActivity {
 
         View headerLayout = navigationView.getHeaderView(0);
         mHeaderCity = (TextView) headerLayout.findViewById(R.id.nav_header_city);
-        mHeaderCity.setText("Ha Noi");
+        mHeaderCity.setText(Utils.getCityAndCountry(this));
     }
 
     private NavigationView.OnNavigationItemSelectedListener navigationViewListener =
@@ -102,16 +111,16 @@ public class BaseActivity extends AppCompatActivity {
                             startActivity(new Intent(BaseActivity.this, MainActivity.class));
                             break;
                         case R.id.nav_menu_graphs:
-//                            createBackStack(new Intent(BaseActivity.this,
-//                                    GraphsActivity.class));
+                            createBackStack(new Intent(BaseActivity.this,
+                                    GraphsActivity.class));
                             break;
                         case R.id.nav_menu_weather_forecast:
-//                            createBackStack(new Intent(BaseActivity.this,
-//                                    WeatherForecastActivity.class));
+                            createBackStack(new Intent(BaseActivity.this,
+                                    WeatherForecastActivity.class));
                             break;
                         case R.id.nav_settings:
-//                            createBackStack(new Intent(BaseActivity.this,
-//                                    SettingsActivity.class));
+                            createBackStack(new Intent(BaseActivity.this,
+                                    SettingsActivity.class));
                             break;
                         case R.id.nav_feedback:
                             Intent sendMessage = new Intent(Intent.ACTION_SEND);
@@ -191,14 +200,14 @@ public class BaseActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case PICK_CITY:
-//                ConnectionDetector connectionDetector = new ConnectionDetector(this);
-//                if (resultCode == RESULT_OK) {
-//                    mHeaderCity.setText(Utils.getCityAndCountry(this));
-//
-//                    if (connectionDetector.isNetworkAvailableAndConnected()) {
-//                        startService(new Intent(this, CurrentWeatherService.class));
-//                    }
-//                }
+                ConnectionDetector connectionDetector = new ConnectionDetector(this);
+                if (resultCode == RESULT_OK) {
+                    mHeaderCity.setText(Utils.getCityAndCountry(this));
+
+                    if (connectionDetector.isNetworkAvailableAndConnected()) {
+                        startService(new Intent(this, CurrentWeatherService.class));
+                    }
+                }
                 break;
         }
     }

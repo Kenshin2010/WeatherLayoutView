@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="app_name" translatable="false">Good Weather</string>
+    <string name="app_name" translatable="false">Weather API</string>
     <string name="enter_city_hint">Enter city</string>
     <string name="label_current_city">Current city</string>
     <string name="label_choose_city">Choose city</string>
