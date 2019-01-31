@@ -226,13 +226,15 @@ public class MainActivity extends BaseActivity implements AppBarLayout.OnOffsetC
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.main_menu_refresh:
-
+                startService(new Intent(this, CurrentWeatherService.class));
+                setUpdateButtonState(true);
                 return true;
             case R.id.main_menu_detect_location:
-
+                requestLocation();
                 return true;
             case R.id.main_menu_search_city:
-
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                startActivityForResult(intent, PICK_CITY);
                 return true;
         }
 

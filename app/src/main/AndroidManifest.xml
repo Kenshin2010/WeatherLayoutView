@@ -32,8 +32,6 @@
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".activity.MainActivity"/>
 
-        <service android:name=".service.CurrentWeatherService"/>
-
         <activity
             android:name=".activity.GraphsActivity"
             android:label="@string/label_activity_graphs"
@@ -63,6 +61,60 @@
                 android:value=".activity.MainActivity"/>
 
         </activity>
+
+        <activity
+            android:name=".activity.SearchActivity"
+            android:label="@string/title_activity_search"
+            android:parentActivityName=".activity.MainActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainActivity"/>
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable"/>
+        </activity>
+
+
+        <receiver android:name=".widget.LessWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.intent.action.LOCALE_CHANGED"/>
+                <action android:name="org.asdtm.goodweather.action.FORCED_APPWIDGET_UPDATE"/>
+                <action android:name="org.asdtm.goodweather.action.APPWIDGET_THEME_CHANGED"/>
+                <action android:name="org.asdtm.goodweather.action.APPWIDGET_UPDATE_PERIOD_CHANGED"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_provider_less"/>
+
+        </receiver>
+
+        <receiver android:name=".widget.MoreWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.intent.action.LOCALE_CHANGED"/>
+                <action android:name="org.asdtm.goodweather.action.FORCED_APPWIDGET_UPDATE"/>
+                <action android:name="org.asdtm.goodweather.action.APPWIDGET_THEME_CHANGED"/>
+                <action android:name="org.asdtm.goodweather.action.APPWIDGET_UPDATE_PERIOD_CHANGED"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_provider_more"/>
+
+        </receiver>
+
+        <service android:name=".service.NotificationService"/>
+        <service android:name=".widget.LessWidgetService"/>
+        <service android:name=".widget.MoreWidgetService"/>
+        <service android:name=".service.CurrentWeatherService"/>
+        <service android:name=".service.LocationUpdateService" />
 
     </application>
 

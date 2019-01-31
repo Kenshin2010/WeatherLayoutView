@@ -5,5 +5,5 @@ public class ApiKeys {
     /**
      * API key for http://openweathermap.org/api
      */
-    public static final String OPEN_WEATHER_MAP_API_KEY = "1487dd8a93bfd85d278d9ac8dcfee94c";
+    public static final String OPEN_WEATHER_MAP_API_KEY = "8d79ab9e7ddb35e1b0b0548d72449e86";
 }

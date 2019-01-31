@@ -33,7 +33,7 @@ import com.manroid.weather.activity.WeatherForecastActivity;
 public class BaseActivity extends AppCompatActivity {
 
     private final String TAG = "BaseActivity";
-    static final int PICK_CITY = 1;
+    public static final int PICK_CITY = 1;
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;

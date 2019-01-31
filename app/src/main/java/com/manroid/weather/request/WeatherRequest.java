@@ -9,12 +9,10 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class WeatherRequest
-{
+public class WeatherRequest {
     private static final String TAG = "WeatherRequest";
 
-    byte[] getWeatherByte(URL url) throws IOException
-    {
+    byte[] getWeatherByte(URL url) throws IOException {
         // Вызов метода openConnection() создает объект подключения к заданному url-адресу
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
@@ -40,13 +38,11 @@ public class WeatherRequest
         }
     }
 
-    public String getResultAsString(URL url) throws IOException
-    {
+    public String getResultAsString(URL url) throws IOException {
         return new String(getWeatherByte(url));
     }
 
-    public String getItems(String lat, String lon, String units, String lang) throws IOException
-    {
+    public String getItems(String lat, String lon, String units, String lang) throws IOException {
         return getResultAsString(Utils.getWeatherForecastUrl(Constants.WEATHER_ENDPOINT, lat, lon, units, lang));
     }
 }
