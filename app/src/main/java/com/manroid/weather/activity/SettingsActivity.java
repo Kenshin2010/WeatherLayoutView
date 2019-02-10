@@ -32,7 +32,6 @@ import android.widget.TextView;
 
 import com.manroid.weather.GoodWeatherApp;
 import com.manroid.weather.R;
-import com.manroid.weather.activity.AppCompatPreferenceActivity;
 import com.manroid.weather.constant.Constants;
 import com.manroid.weather.service.NotificationService;
 
